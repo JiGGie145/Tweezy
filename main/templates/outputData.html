@@ -117,19 +117,19 @@
                 <!-- Non anomaous icon -->
                 <div class="has-text-centered">
                 <p class="title is-1 nonanomalous">Non Anomalous</p>
-                <img src="{% static "main/NonAnomalous.svg" %}" width="300" height="300">
+                <img src="https://avatars.io/twitter/{{name}}" width="300" height="300">
                 </div>
                 {% elif type == -1 %}
                 <!-- User Not Found icon -->
                 <div class="has-text-centered">
                 <p class="title is-1 nonanomalous">User Not Found!</p>
-                <img src="{% static "main/userNotFound.png" %}" width="300" height="300">
+                <img src="https://avatars.io/twitter/{{name}}" width="300" height="300">
                 </div>
                {% else %}
                 <!-- Suspected icon -->
                 <div class="has-text-centered">
                 <p class="title is-1 suspected">Suspected</p>
-                <img src="{% static "main/suspect.svg" %}" width="300" height="300">
+                <img src="https://avatars.io/twitter/{{name}}" width="300" height="300">
                 </div>
                {% endif %}
                
