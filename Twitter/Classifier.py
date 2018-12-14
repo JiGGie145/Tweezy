@@ -1,4 +1,3 @@
-
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.naive_bayes import GaussianNB
 from sklearn.svm import SVC
@@ -8,17 +7,19 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 import os
-dirpath = os.getcwd()+'/Twitter/'
+
+dirpath = os.getcwd() + '/Twitter/'
+
 
 def KNN(dataset):
     # Importing the dataset
 
-    X = dataset.iloc[:, [0,1,2,3,4]].values
+    X = dataset.iloc[:, [0, 1, 2, 3, 4]].values
     y = dataset.iloc[:, 6].values
 
     # Splitting the dataset into the Training set and Test set
     from sklearn.model_selection import train_test_split
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.25, random_state = 0)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=0)
 
     # Feature Scaling
     from sklearn.preprocessing import StandardScaler
@@ -28,8 +29,8 @@ def KNN(dataset):
 
     # Fitting classifier to the Training set
     # Create your classifier here
-    classifier = KNeighborsClassifier(n_neighbors=5,metric='minkowski',p=2)
-    classifier.fit(X_train,y_train)
+    classifier = KNeighborsClassifier(n_neighbors=5, metric='minkowski', p=2)
+    classifier.fit(X_train, y_train)
 
     # Predicting the Test set results
     y_pred = classifier.predict(X_test)
@@ -41,14 +42,15 @@ def KNN(dataset):
     # print(cm)
     return cm
 
+
 def NaiveBayesClassifier(dataset):
     # Importing the dataset
-    X = dataset.iloc[:, [0,1,2,3,4]].values
+    X = dataset.iloc[:, [0, 1, 2, 3, 4]].values
     y = dataset.iloc[:, 6].values
 
     # Splitting the dataset into the Training set and Test set
     from sklearn.model_selection import train_test_split
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.25, random_state = 0)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=0)
 
     # Feature Scaling
     from sklearn.preprocessing import StandardScaler
@@ -58,8 +60,8 @@ def NaiveBayesClassifier(dataset):
 
     # Fitting classifier to the Training set
     # Create your classifier here
-    classifier=GaussianNB()
-    classifier.fit(X_train,y_train)
+    classifier = GaussianNB()
+    classifier.fit(X_train, y_train)
 
     # Predicting the Test set results
     y_pred = classifier.predict(X_test)
@@ -74,12 +76,12 @@ def NaiveBayesClassifier(dataset):
 
 def SVM(dataset):
     # Importing the dataset
-    X = dataset.iloc[:, [0,1,2,3,4]].values
+    X = dataset.iloc[:, [0, 1, 2, 3, 4]].values
     y = dataset.iloc[:, 6].values
 
     # Splitting the dataset into the Training set and Test set
     from sklearn.model_selection import train_test_split
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.25, random_state = 0)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=0)
 
     # Feature Scaling
     from sklearn.preprocessing import StandardScaler
@@ -89,8 +91,8 @@ def SVM(dataset):
 
     # Fitting classifier to the Training set
     # Create your classifier here
-    classifier = SVC(kernel='linear',random_state=0)
-    classifier.fit(X_train,y_train)
+    classifier = SVC(kernel='linear', random_state=0)
+    classifier.fit(X_train, y_train)
 
     # Predicting the Test set results
     y_pred = classifier.predict(X_test)
@@ -106,12 +108,12 @@ def SVM(dataset):
 def DecisionTree(dataset):
     # Importing the dataset
     # dataset = pd.read_csv('dataset_gen.csv')
-    X = dataset.iloc[:, [0,1,2,3,4]].values
+    X = dataset.iloc[:, [0, 1, 2, 3, 4]].values
     y = dataset.iloc[:, 6].values
 
     # Splitting the dataset into the Training set and Test set
     from sklearn.model_selection import train_test_split
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.25, random_state = 0)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=0)
 
     # Feature Scaling
     from sklearn.preprocessing import StandardScaler
@@ -121,8 +123,8 @@ def DecisionTree(dataset):
 
     # Fitting classifier to the Training set
     # Create your classifier here
-    classifier = DecisionTreeClassifier(criterion='entropy',random_state=0)
-    classifier.fit(X_train,y_train)
+    classifier = DecisionTreeClassifier(criterion='entropy', random_state=0)
+    classifier.fit(X_train, y_train)
 
     # Predicting the Test set results
     y_pred = classifier.predict(X_test)
@@ -138,12 +140,12 @@ def DecisionTree(dataset):
 def RandomForest(dataset):
     # Importing the dataset
     # dataset = pd.read_csv('dataset_gen.csv')
-    X = dataset.iloc[:, [0,1,2,3,4]].values
+    X = dataset.iloc[:, [0, 1, 2, 3, 4]].values
     y = dataset.iloc[:, 6].values
 
     # Splitting the dataset into the Training set and Test set
     from sklearn.model_selection import train_test_split
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.25, random_state = 0)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=0)
 
     # Feature Scaling
     from sklearn.preprocessing import StandardScaler
@@ -153,8 +155,8 @@ def RandomForest(dataset):
 
     # Fitting classifier to the Training set
     # Create your classifier here
-    classifier = RandomForestClassifier(n_estimators=10,criterion='entropy',random_state=0)
-    classifier.fit(X_train,y_train)
+    classifier = RandomForestClassifier(n_estimators=10, criterion='entropy', random_state=0)
+    classifier.fit(X_train, y_train)
 
     # Predicting the Test set results
     y_pred = classifier.predict(X_test)
@@ -166,13 +168,14 @@ def RandomForest(dataset):
     # print(cm)
     return cm
 
-dataset=None
+
+dataset = None
 try:
-    dataset = pd.read_csv(dirpath+'dataset_gen.csv')
+    dataset = pd.read_csv(dirpath + 'dataset_gen.csv')
 except:
     dataset = pd.read_csv('dataset_gen.csv')
-cm=KNN(dataset)
-cm=NaiveBayesClassifier(dataset)
-cm=DecisionTree(dataset)
-cm=RandomForest(dataset)
-cm=SVM(dataset)
+cm = KNN(dataset)
+cm = NaiveBayesClassifier(dataset)
+cm = DecisionTree(dataset)
+cm = RandomForest(dataset)
+cm = SVM(dataset)

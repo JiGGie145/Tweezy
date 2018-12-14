@@ -9,37 +9,39 @@ except:
 
 import requests
 
-KEY="d490ab2486ff4140b3ed73590b9908e1cbcf8933"
+KEY = "d490ab2486ff4140b3ed73590b9908e1cbcf8933"
+
 
 def rank_wot(dataset):
-    counter=0
-    total=0
+    counter = 0
+    total = 0
     for data in dataset:
-        mal=False
-        urls=fetch_url(data)
-        total=total+1
+        mal = False
+        urls = fetch_url(data)
+        total = total+1
         for url in urls:
             if mal:
                 break
             try:
-                r=requests.get(url)
-                url=r.url
+                r = requests.get(url)
+                url = r.url
                 report = wot_reports_for_domains([url], KEY)
 
                 # print(parse_attributes_for_report(report))
                 for key in report:
-                    print(url," rank is ",report[key]['0'][1])
-                    if(report and report[key] and report[key]['0'][1]<40):
-                        counter=counter+1
-                        mal=True
+                    print(url, " rank is ", report[key]['0'][1])
+                    if report and report[key] and report[key]['0'][1] < 40:
+                        counter = counter+1
+                        mal = True
                         break
             except:
                 print("cannot check")
-    print(counter," ",len(dataset))
-    WOT_RANK=(float(counter)/len(dataset))*100
-    if(WOT_RANK<10):
+    print(counter, " ", len(dataset))
+    WOT_RANK = (float(counter)/len(dataset))*100
+    if WOT_RANK < 10:
         return 0
     return 10
+
 
 API_VERSION = 0.4
 REPUTATION_ENDPOINT = "http://api.mywot.com/" + str(API_VERSION) + "/public_link_json2"
@@ -144,7 +146,7 @@ def __get_for_domains(domains_for_one_request, key, max_tries):
             parsed_response = json.loads(response)
             assert isinstance(parsed_response, dict)
             if len(parsed_response) == 0:
-                print("Got empty response for request %s with length %s. Maybe it's too long" \
+                print("Got empty response for request %s with length %s. Maybe it's too long"
                       % (request_string, len(request_string)))
         except ValueError as e:
             print("Non parsable response:%s for request:%s" % (response, request_string))
